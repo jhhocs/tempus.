@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="Javascript/clock.js"></script>
+	<script type="text/javascript" src="Javascript/todolist.js"></script>
+</head>
+<body>
+<div id = "wholepage">
+	<header>
+		<h1 class = "logo">tempus.</h1>
+		<nav>
+			<h2 class = "topBar" id = "topbar"></h2>
+			<div class = "fadein">
+				<div id="clock" class = "clock">Loading...</div>
+			</div>
+		</nav>
+	</header>
+	<h1 id = "toDoHeader">To-do</h1>
+	<div>
+		<input type="text" id="myInput" placeholder="Add task" maxlength="200">
+			<button class="addBtn">+</button>
+			<div id = "myDIV">
+				<div id="toDoDIV">
+					<nav id="toDoScrollbar">
+						<ul id="myUL" class="todo">	
+						</ul>
+					</nav>
+				</div>
+			</div>
+	</div>
+	<!-- Trigger/Open The Modal -->
+	<button id="colorChangeBtn" class="colorChangeBtn"></button>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	<!-- Modal content -->
+		<div class="modal-content">
+			<span class="closeColorChange" id ="myCloseColorChange"></span>
+			<button type="button" class="colorChangeBtns" id="cFF9999"></button>
+			<button type="button" class="colorChangeBtns" id="cFFCF87"></button>
+			<button type="button" class="colorChangeBtns" id="c99DA83"></button>
+			<button type="button" class="colorChangeBtns" id="c93D7E6"></button>
+			<button type="button" class="colorChangeBtns" id="cC8A8F2"></button>
+			<button type="button" class="colorChangeBtns" id="c505050"></button>
+		</div>
+
+	</div>
+</div>
+</body>
+</html>

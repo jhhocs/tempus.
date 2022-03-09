@@ -1,0 +1,340 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.logo{
+	position: absolute;
+	width: 115px;
+	height: 27px;
+	left: 17px;
+	top: 13px;
+
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 15px;
+
+
+color: #FFFFFF;
+}
+.clock{
+	position: absolute;
+	width: 113px;
+	height: 70px;
+	left: 34px;
+	top: 76px;
+
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	line-height: 40px;
+
+	text-align: left;
+
+	color: #FFFFFF;
+}
+.topBar{
+	position: absolute;
+	width: 394px;
+	height: 121px;
+	left: 18px;
+	top: 54px;
+
+	background: #FF9999;
+	border-radius: 30px;
+}
+#toDoHeader{
+	position: absolute;
+	width: 174px;
+	height: 32px;
+	left: 20px;
+	top: 185px;
+
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 40px;
+
+	color: #EF7070;
+}
+
+/* Style the input */
+input {
+	position: absolute;
+	width: 250px;
+	height: 40px;
+	left: 14px;
+	top: 223px;
+
+	background: #FFFFFF;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 15px;
+  border: none;
+  border-radius: 0;
+  padding: 10px;
+  float: left;
+  border-style: solid;
+  border-width:2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-color: white;
+  border-radius: 22px 0 0 22px;
+  outline:none;
+}
+
+/* Style the "Add" button */
+.addBtn {
+	position: absolute;
+	width: 45px;
+	height: 40px;
+	top: 223px;
+	left:255px;
+
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 15px;
+  padding: 10px;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border-style: solid;
+  border-width:2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-color: white;
+  border-radius: 0 22px 22px 0;
+  outline:none;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+
+/* TO DO LIST */
+/* Style the list items */
+ul li {
+	left: 14px;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 30px 10px 40px;
+  word-wrap: break-word;
+  list-style-type: none;
+  background: #f9f9f9;
+  font-size: 12px;
+  transition: 0.2s;
+  width: 95%;
+  border-style: solid;
+  border-width:2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-color: white;
+  border-radius: 22px;
+  margin-top: 10px;
+	transform: scaleY(1);
+	transition: 250ms;
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+  color: #FFF;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #888;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 12px;
+  width: 5.6px;
+}
+
+ul li.grow {
+	transform: scaleY(0);
+	transition: 200ms;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px 16px 10px 16px;
+}
+
+.close:hover {
+	background: #cccccc80;
+	border-radius:30px 30px 30px 30px;
+}
+
+#myDIV {
+	position:absolute;
+    top: 265px;
+    /*left: 14px;*/
+    width: 320px;
+    height: 80%;
+	min-height: 100vh;
+}
+#myUL {
+    top: 40%;
+    left: 150px;
+	width: 10%;
+	padding-left: 0;
+	padding-right: 10px;
+	max-height: 270px;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#toDoScrollbar ul{
+	height:30%;
+	width:100%;
+	overflow:hidden;
+	overflow-y:scroll;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Background color button*/
+#colorChangeBtn{
+	position:absolute;
+	background-color: #FF9999;
+	top:543px;
+	left: 6px;
+	height: 27px;
+	width:27px;
+	border-radius:30px;
+	border-width:2px;
+	border-color: white;
+	outline:none;
+	cursor: pointer;
+}
+
+#colorChangeBtn:hover{
+	background-color: #FF9999;
+	transform: scale(1.05, 1.05);
+}
+
+
+.colorChangeBtns{
+	height: 18.11px;
+	width:18.11px;
+	border-radius:30px;
+	border-color:white;
+	border-width:0px;
+	outline:none;
+	cursor: pointer;
+}
+
+.colorChangeBtns:hover {
+	transform: scale(1.05, 1.05);
+}
+
+/* The Modal (background) */
+#CCBBackdrop.grow {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+/* Modal Content */
+#CCBHolder {
+	position:absolute;
+	background: rgba(102, 102, 102, 0.5);
+	border: 1px solid #888;
+	border-radius: 50px;
+	height: 26px;
+	left: 39px;
+	top: 543px;
+	overflow: hidden;
+	padding: 3px;
+
+	transform: scaleX(0);
+	transition: all 200ms;
+	transform-origin: 0% 50%;
+
+}
+
+#CCBHolder.grow {
+	transform: scaleX(1);
+	transition: all 200ms;
+	transform-origin: 0% 50%;
+}
+
+#cFF9999{
+	background-color: #FF9999;
+}
+#cFFCF87{
+	background-color: #FFCF87;
+}
+#c99DA83{
+	background-color: #99DA83;
+}
+#c93D7E6{
+	background-color: #93D7E6;
+}
+#cC8A8F2{
+	background-color: #C8A8F2;
+}
+#c505050{
+	background-color: #505050;
+}
+#wholepage{
+	width: 340px;
+	height: 580px;
+	background-color: pink;
+}

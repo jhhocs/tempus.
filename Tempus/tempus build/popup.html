@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id = "wholepage">
+	<header>
+		<h1 class = "logo">tempus.</h1>
+		<nav>
+			<h2 class = "topBar" id = "topbar"></h2>
+			<div class = "fadein">
+				<div id="clock" class = "clock">Loading...</div>
+				<script type="text/javascript" src="Javascript/clock.js"></script>
+			</div>
+		</nav>
+	</header>
+	<h1 id = "toDoHeader">To-do</h1>
+	<div>
+		<input type="text" id="myInput" placeholder="Add task" maxlength="200">
+			<button class="addBtn">+</button>
+			<div id = "myDIV">
+				<div id="toDoDIV">
+					<nav id="toDoScrollbar">
+						<ul id="myUL" class="todo">
+						</ul>
+					</nav>
+				</div>
+			</div>
+	</div>
+
+	<button id="colorChangeBtn"></button>
+
+	<div id="CCBBackdrop">
+
+		<div id = "CCBHolder">
+			<button type="button" class="colorChangeBtns" id="cFF9999"></button>
+			<button type="button" class="colorChangeBtns" id="cFFCF87"></button>
+			<button type="button" class="colorChangeBtns" id="c99DA83"></button>
+			<button type="button" class="colorChangeBtns" id="c93D7E6"></button>
+			<button type="button" class="colorChangeBtns" id="cC8A8F2"></button>
+			<button type="button" class="colorChangeBtns" id="c505050"></button>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript" src="Javascript/todolist.js"></script>
+</body>
+</html>

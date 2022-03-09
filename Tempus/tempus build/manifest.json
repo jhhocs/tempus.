@@ -11,7 +11,10 @@
   		"128": "images/temp128.png"
   	},
   	"default_popup": "popup.html",
-  	"default_title": "tempus."
+  	"default_title": "tempus. BETA"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "icons": {
 	"16": "images/temp16.png",

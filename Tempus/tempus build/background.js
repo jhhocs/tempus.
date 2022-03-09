@@ -1,11 +1,27 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+chrome.runtime.onStartup.addListener(function() {
+  if(localStorage.getItem("toDoList") == null){
+    var storedToDoStuff = [];
+  }
+  else{
+    var storedToDoStuff = JSON.parse(localStorage.getItem("toDoList"));
+  }
+  if(localStorage.getItem("toDoListChecked") == null){
+    var storedToDoStuffChecked = [];
+  }
+  else{
+    var storedToDoStuffChecked = JSON.parse(localStorage.getItem("toDoListChecked"));
+  }
 
-'use strict';
-
-chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({color: '#3aa757'}, function() {
-    console.log("test");
-  });
+    var numToDo = storedToDoStuff.length;
+    var numChecked = 0;
+    for(var i = 0; i < storedToDoStuffChecked.length; i++){
+      if(storedToDoStuffChecked[i] == true)
+        numChecked++;
+    }
+    var numRemaining = (numToDo - numChecked).toString();
+    if(numRemaining == "0")
+      numRemaining = '';
+  
+    chrome.action.setBadgeText({'text': numRemaining});
 });
+

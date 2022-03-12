@@ -29,28 +29,73 @@ var close = document.getElementsByClassName("close");
 var i;
 
 var list = document.querySelector('ul.todo');
-list.addEventListener('click', function(ev) {
-	if (ev.target.tagName === 'LI') {
-		var temp = ev.target.getElementsByClassName("close");
-		ev.target.classList.toggle('checked');
-		saveChecked();
+let curEditing;
+let asdf;
+
+// CHECKS FOR DOUBLE CLICK. IF SINGLE CLICK SET TO CHECKED
+list.addEventListener('click', (event) => {
+	if (event.target.tagName === 'LI' && !event.target.isContentEditable) {
+		event.target.setAttribute("contenteditable", "plaintext-only");
+		event.target.getElementsByClassName("close")[0].setAttribute("contenteditable", false);
+		const temp = setTimeout(function() {
+			event.target.setAttribute("contenteditable", false);
+			event.target.classList.toggle('checked');
+			saveChecked();
+		}, 175);
+		list.addEventListener('click', () => {
+			clearTimeout(temp);
+			curEditing = event.target;
+		});
 	}
 }, false);
 
+// CHECK IF EDITED TEXT IS EMPTY
+list.addEventListener("keydown", (e) => {
+	console.log(curEditing.textContent);
+	if (e.keyCode == 8 || e.keyCode == 46) { // delete and del keys
+		if (curEditing.textContent.length <= 2) { // last inner element 
+			
+			e.preventDefault()
+		} 
+	}
+});
+
 const button = document.querySelector('button');
 
-button.addEventListener('click', event => {
+button.addEventListener('click', () => {
 	newElement();
 });
 
 var input = document.getElementById("myInput");
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
    event.preventDefault();
    newElement();
   }
 });
 
+function closeElement() {
+	for (var i = 0; i < close.length; i++) {
+		close[i].onclick = function() {
+			var div = this.parentElement;
+			let obj = this;
+			div.classList.add('grow');
+			setTimeout(function () {
+				div.remove(obj);
+				toDoStuffClosed[toDoStuffClosed.length] = obj.id;
+				var count = 0;
+				for(var j = 0; j < toDoStuffClosed.length; j++){
+					if(obj.id>toDoStuffClosed[j]){
+						count++;
+					}
+				}
+				toDoStuff.splice(obj.id-count,1);
+				localStorage.setItem("toDoList", JSON.stringify(toDoStuff));
+				saveChecked();
+			}, 250);
+		}
+	}
+}
 
 function newElement() {
 	var li = document.createElement("li");
@@ -78,25 +123,7 @@ function newElement() {
 	span.appendChild(txt);
 	li.appendChild(span);
 
-	for (var i = 0; i < close.length; i++) {
-		close[i].onclick = function() {
-			var div = this.parentElement;
-			let obj = this;
-			div.classList.add('grow');
-			setTimeout(function () {
-				div.remove(obj);
-				toDoStuffClosed[toDoStuffClosed.length] = obj.id;
-				var count = 0;
-				for(var j = 0; j < toDoStuffClosed.length; j++){
-				if(obj.id>toDoStuffClosed[j])
-					count++;
-				}
-				toDoStuff.splice(obj.id-count,1);
-				localStorage.setItem("toDoList", JSON.stringify(toDoStuff));
-				saveChecked();
-			}, 250);
-		}
-	}
+	closeElement();
 	setBadge();
 }
 
@@ -122,26 +149,7 @@ for(var z=0;z<storedToDoStuff.length;z++){
 	span.appendChild(txt);
 	li.appendChild(span);
 
-	for (var i = 0; i < close.length; i++) {
-		close[i].onclick = function() {
-			var div = this.parentElement;
-			let obj = this;
-			div.classList.add('grow');
-			setTimeout(function () {
-				div.remove(obj);
-				toDoStuffClosed[toDoStuffClosed.length] = obj.id;
-				var count = 0;
-				for(var j = 0; j < toDoStuffClosed.length; j++){
-					if(obj.id>toDoStuffClosed[j]){
-						count++;
-					}
-				}
-				toDoStuff.splice(obj.id-count,1);
-				localStorage.setItem("toDoList", JSON.stringify(toDoStuff));
-				saveChecked();
-			}, 250);
-		}
-	}
+	closeElement();
 }
 
 var prevList = document.getElementsByTagName("li");
@@ -201,10 +209,23 @@ document.getElementById('colorChangeBtn').addEventListener('click', e => {
 });
 
 window.addEventListener('click', e => {
+	// Close Color Change Button Element
     if (e.target == backdrop) {
         backdrop.classList.remove('grow');
         cCBHolder.classList.remove('grow');
     }
+
+	// Stop Editing Text
+	if (e.target != curEditing && curEditing != null) {
+		console.log(curEditing.textContent);
+		if(curEditing.textContent == ''){
+			console.log("asdf");
+			closeElement();
+		}
+		curEditing.setAttribute("contenteditable", false);
+		curEditing = null;
+		console.log(curEditing);
+	}
 });
 
 const colorButtons = [...document.querySelectorAll('.colorChangeBtns')];

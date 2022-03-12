@@ -1,27 +1,14 @@
-chrome.runtime.onStartup.addListener(function() {
+//chrome.runtime.onStartup.addListener(function() {
+chrome.tabs.onUpdated.addListener(function() {
+  console.log("1");
   if(localStorage.getItem("toDoList") == null){
+    console.log("2");
     var storedToDoStuff = [];
   }
   else{
+    console.log("3");
     var storedToDoStuff = JSON.parse(localStorage.getItem("toDoList"));
   }
-  if(localStorage.getItem("toDoListChecked") == null){
-    var storedToDoStuffChecked = [];
-  }
-  else{
-    var storedToDoStuffChecked = JSON.parse(localStorage.getItem("toDoListChecked"));
-  }
-
-    var numToDo = storedToDoStuff.length;
-    var numChecked = 0;
-    for(var i = 0; i < storedToDoStuffChecked.length; i++){
-      if(storedToDoStuffChecked[i] == true)
-        numChecked++;
-    }
-    var numRemaining = (numToDo - numChecked).toString();
-    if(numRemaining == "0")
-      numRemaining = '';
   
-    chrome.action.setBadgeText({'text': numRemaining});
-});
-
+  chrome.action.setBadgeText({'text': '1'});
+})

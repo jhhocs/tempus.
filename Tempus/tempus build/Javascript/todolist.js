@@ -278,5 +278,58 @@ function changeColor(colorId) {
             outsideBtn.style.background = "#505050";
             toDoHeader.style.color = "#FFFFFF";
             topbar.style.background = "#505050";
+			hexToDec("#a32323");
+			break;
+		case "FFFFFF":
+			var currentTime = new Date();
+			var hours = currentTime.getHours();
+			var minutes = currentTime.getMinutes();
+			if (5 <= hours && hours < 8) {//Morning
+				backgroundColor.style.background = "#3B4371";
+				outsideBtn.style.background = "#F3904F";
+				toDoHeader.style.color = "#3B4371";
+				topbar.style.background = "#F3904F";
+			}
+			if (8 <= hours && hours < 17) {//Day
+				backgroundColor.style.background = "#0083B0";
+				outsideBtn.style.background = "#00B4DB";
+				toDoHeader.style.color = "#0083B0";
+				topbar.style.background = "#00B4DB";
+			}
+			if (17 <= hours && hours < 19) {//Evening
+				backgroundColor.style.background = "#C06C84";
+				outsideBtn.style.background = "#355C7D";
+				toDoHeader.style.color = "#C06C84";
+				topbar.style.background = "#355C7D";
+			}
+			if (19 <= hours || hours < 5) {//Night
+				backgroundColor.style.background = "#0f2027";
+				outsideBtn.style.background = "#2c5364";
+				toDoHeader.style.color = "#0f2027";
+				topbar.style.background = "#2c5364";
+			}
+
     }
+}
+
+function decToHex(r, g, b) {
+
+}
+
+function toHex(input) {
+
+}
+
+function hexToDec(hex) {
+	var r, g, b;
+	r = hex.substring(1, 3);
+	g = hex.substring(3, 5);
+	b = hex.substring(5, 7);
+	console.log(`${r} ${g} ${b}`);
+	toNum(r);
+
+}
+
+function toNum(input) {
+	
 }

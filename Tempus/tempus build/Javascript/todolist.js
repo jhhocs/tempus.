@@ -313,7 +313,11 @@ function changeColor(colorId) {
 }
 
 function decToHex(r, g, b) {
-
+	dHr = r.toString(16);
+	dHg = g.toString(16);
+	dHb = b.toString(16);
+	hcode = dHr + dHg + dHb;
+	return hcode;
 }
 
 function toHex(input) {
@@ -333,3 +337,6 @@ function hexToDec(hex) {
 function toNum(input) {
 	
 }
+
+
+console.log(decToHex(255, 255, 255))

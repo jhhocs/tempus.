@@ -141,6 +141,7 @@ ul li {
   border-color: white;
   border-radius: 22px;
   margin-top: 10px;
+  opacity: 0.85;
 	transform: scaleY(1);
 	transition: 250ms;
   /* make the list items unselectable */

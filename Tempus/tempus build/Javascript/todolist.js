@@ -230,7 +230,7 @@ window.addEventListener('click', e => {
 
 const colorButtons = [...document.querySelectorAll('.colorChangeBtns')];
 document.addEventListener('click', e => {
-    var colorId = e.target.id;
+    let colorId = e.target.id;
     if (!colorButtons.includes(e.target)) return;
     if(colorId.length>6)
         colorId = colorId.substring(1);
@@ -240,8 +240,11 @@ document.addEventListener('click', e => {
 });
 
 function changeColor(colorId) {
-    var backgroundColor = document.getElementById("wholepage");
-    var outsideBtn = document.getElementById("colorChangeBtn");
+    let backgroundColor = document.getElementById("wholepage");
+    let outsideBtn = document.getElementById("colorChangeBtn");
+	if(colorId == outsideBtn) {
+		return;
+	}
     switch(colorId) {
         case "FF9999":
             backgroundColor.style.background = "#FFC8C8";
@@ -280,10 +283,10 @@ function changeColor(colorId) {
             topbar.style.background = "#505050";
 			hexToDec("#a32323");
 			break;
-		case "FFFFFF":
-			var currentTime = new Date();
-			var hours = currentTime.getHours();
-			var minutes = currentTime.getMinutes();
+		case "F3904F":
+			let currentTime = new Date();
+			let hours = currentTime.getHours();
+			let minutes = currentTime.getMinutes();
 			if (5 <= hours && hours < 8) {//Morning
 				backgroundColor.style.background = "#3B4371";
 				outsideBtn.style.background = "#F3904F";
@@ -308,6 +311,12 @@ function changeColor(colorId) {
 				toDoHeader.style.color = "#0f2027";
 				topbar.style.background = "#2c5364";
 			}
+			let img = document.createElement("img");
+			img.src = "images/city.png";
+			let block = document.getElementById("wholepage");
+			console.log(img.src);
+			if(block.src == "images/city.png") return;
+			block.appendChild(img);
 
     }
 }
@@ -325,7 +334,7 @@ function toHex(input) {
 }
 
 function hexToDec(hex) {
-	var r, g, b;
+	let r, g, b;
 	r = hex.substring(1, 3);
 	g = hex.substring(3, 5);
 	b = hex.substring(5, 7);

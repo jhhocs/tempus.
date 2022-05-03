@@ -57,7 +57,8 @@ function newElement() {
 	var inputValue = document.getElementById("myInput").value;
 	var t = document.createTextNode(inputValue);
 	li.appendChild(t);
-	if (inputValue != '') {
+	let temp = inputValue;
+	if (temp.replace(/\s/g, '') != '') {
 		document.getElementById("myUL").appendChild(li);
 		toDoStuff[toDoStuff.length] = inputValue;
 		li.classList.add('grow');
@@ -105,8 +106,7 @@ for(var z=0;z<storedToDoStuff.length;z++){
 	var inputValue = storedToDoStuff[z];
 	var t = document.createTextNode(inputValue);
 	li.appendChild(t);
-	if (inputValue === '') {
-	} else {
+	if (inputValue != '') {
 		document.getElementById("myUL").appendChild(li);
 		toDoStuff[toDoStuff.length] = inputValue;
 		console.log(toDoStuff);

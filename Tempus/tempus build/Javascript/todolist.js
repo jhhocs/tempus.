@@ -57,8 +57,7 @@ function newElement() {
 	var inputValue = document.getElementById("myInput").value;
 	var t = document.createTextNode(inputValue);
 	li.appendChild(t);
-	let temp = inputValue;
-	if (temp.replace(/\s/g, '') != '') {
+	if (inputValue.replace(/\s/g, '') != '') {
 		document.getElementById("myUL").appendChild(li);
 		toDoStuff[toDoStuff.length] = inputValue;
 		li.classList.add('grow');

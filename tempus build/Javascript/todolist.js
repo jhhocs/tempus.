@@ -1,32 +1,34 @@
 var myNodelist = document.getElementsByTagName("LI");
-var i;
 var toDoCounter=-1;
 var toDoStuff = [];
 var toDoStuffClosed = [];
 var toDoStuffChecked = [];
-if(localStorage.getItem("toDoList") == null){
-	var storedToDoStuff = [];
-}
-else{
-	var storedToDoStuff = JSON.parse(localStorage.getItem("toDoList"));
-}
-if(localStorage.getItem("toDoListChecked") == null){
-	var storedToDoStuffChecked = [];
-}
-else{
-	var storedToDoStuffChecked = JSON.parse(localStorage.getItem("toDoListChecked"));
+
+var storedToDoStuff = [];
+var storedToDoStuffChecked = [];
+var storedSavedInput = [];
+
+if(localStorage.getItem("toDoList") != null) {
+	storedToDoStuff = JSON.parse(localStorage.getItem("toDoList"));
 }
 
-for (i = 0; i < myNodelist.length; i++) {
-	var span = document.createElement("SPAN");
-	var txt = document.createTextNode("\u00D7");
+if(localStorage.getItem("toDoListChecked") != null) {
+	storedToDoStuffChecked = JSON.parse(localStorage.getItem("toDoListChecked"));
+}
+
+if(localStorage.getItem("savedInput") != null) {
+	storedSavedInput = JSON.parse(localStorage.getItem("savedInput"));
+}
+
+for (let i = 0; i < myNodelist.length; i++) {
+	let span = document.createElement("SPAN");
+	let txt = document.createTextNode("\u00D7");
 	span.className = "close";
 	span.appendChild(txt);
 	myNodelist[i].appendChild(span);
 }
 
 var close = document.getElementsByClassName("close");
-var i;
 
 var list = document.querySelector('ul.todo');
 list.addEventListener('click', function(ev) {
@@ -41,14 +43,19 @@ const button = document.querySelector('button');
 
 button.addEventListener('click', event => {
 	newElement();
+	localStorage.setItem("savedInput", JSON.stringify(""));
 });
 
 var input = document.getElementById("myInput");
+
 input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   newElement();
-  }
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		newElement();
+	}
+
+  	let currentInput = document.getElementById("myInput").value;
+	localStorage.setItem("savedInput", JSON.stringify(currentInput));
 });
 
 
@@ -78,7 +85,7 @@ function newElement() {
 	span.appendChild(txt);
 	li.appendChild(span);
 
-	for (var i = 0; i < close.length; i++) {
+	for (let i = 0; i < close.length; i++) {
 		close[i].onclick = function() {
 			var div = this.parentElement;
 			let obj = this;
@@ -100,7 +107,11 @@ function newElement() {
 	setBadge();
 }
 
-for(var z=0;z<storedToDoStuff.length;z++){
+if(storedSavedInput.replaceAll(' ', '').length > 0) {
+	document.getElementById("myInput").value = storedSavedInput;
+}
+
+for(let z=0;z<storedToDoStuff.length;z++){
 	var li = document.createElement("li");
 	var inputValue = storedToDoStuff[z];
 	var t = document.createTextNode(inputValue);
@@ -111,7 +122,7 @@ for(var z=0;z<storedToDoStuff.length;z++){
 		console.log(toDoStuff);
 		toDoCounter++;
 	}
-	document.getElementById("myInput").value = "";
+	//document.getElementById("myInput").value = "";
 
 	var span = document.createElement("SPAN");
 	var txt = document.createTextNode("\u00D7");

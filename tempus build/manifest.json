@@ -1,6 +1,6 @@
 {
   "name": "tempus. BETA",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "A simple task management tool",
   "manifest_version": 3,
   "action": {
